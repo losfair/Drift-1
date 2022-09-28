@@ -6,7 +6,7 @@ import { SequelizeStorage, Umzug } from "umzug"
 export const sequelize = new Sequelize({
 	dialect: "sqlite",
 	database: "drift",
-	storage: config.memory_db ? ":memory:" : databasePath,
+	storage: config.memory_db ? ":memory:" : (process.env.DATABASE_PATH || databasePath),
 	models: [__dirname + "/lib/models"],
 	logging: console.log
 })
